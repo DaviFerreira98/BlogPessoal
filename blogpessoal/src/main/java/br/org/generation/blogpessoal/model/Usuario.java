@@ -1,11 +1,22 @@
 package br.org.generation.blogpessoal.model;
 
-import java.util.*;
+import java.util.List;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "tb_usuarios")
@@ -30,7 +41,8 @@ public class Usuario {
 	@NotNull(message = "Digite o seu Nome,Por favor")
 	@Size(min = 10, max = 255, message = "O Nome da completo deve conter no mínimo 10 caracteres e no máximo 255!")
 	private String nome;
-		
+	
+	@ApiModelProperty(example = "email@email.com.br")
 	@Email(message = "O atributo Usuário deve ser um email válido!")
 	@NotNull(message = "Digite um Usuario/Email,Por favor")
 	@Size(max = 255, message = "O usuário deve conter no máximo 255!")
